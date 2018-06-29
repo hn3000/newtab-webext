@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Tab</title>
+        <style>
+            body, #contents {
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                border: none;
+                box-sizing: border-box;
+                position: relative;
+                overflow: hidden;
+            }
+            #contents div,
+            #contents span {
+                display: none;
+            }
+            #contents div {
+                flex: 1;
+                height: 100vh;
+            }
+            #contents.settings-flag .settings,
+            #contents.frame-flag .frame {
+                display: flex;
+            }
+            .settings form {
+                width: 75vmin;
+                height: 100%;
+                margin: auto auto;
+            } 
+            input[type=text] {
+                width: 100%;
+            }
+            h1 { font-size: 20px; font-family: Verdana, Geneva, Tahoma, sans-serif; }
+            .frame iframe {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                border: 0;
+            }
+            #contents span.switch {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: fit-content;
+                height: fit-content;
+                flex: 0;
+                z-index: 100;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contents" class="settings-flag">
+            <div class="settings">
+                <form id="options">
+                    <h1>New Tab Page Settings</h1>
+                    <input id="url" type="text">
+                </form>
+            </div>
+            <div class="frame">
+                <iframe id="frame" src="about:blank"></iframe>
+            </div>
+            <span class="switch frame">
+                <input id="switch-settings" type="button" value="settings" >
+            </span>
+            <span class="switch settings">
+                <input id="switch-contents" type="button" value="contents" >
+            </span>
+        </div>
+        <script type="text/ecmascript" src="code.js"></script>
+    </body>
+</html>

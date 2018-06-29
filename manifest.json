@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "newtab",
+    "version": "1.0",
+
+    "description": "Replaces the new tab page.",
+    "author": "harald@niesche.de",
+
+    "icons": {
+        "48": "icons/newtab-icon-48.png",
+        "96": "icons/newtab-icon-96.png"
+    },
+    "chrome_url_overrides": {
+        "newtab": "newtab.html"
+    },
+    "chrome_settins_overrides": {
+        "homepage": "newtab.html"
+    },
+    "options_ui": {
+        "page": "options.html"
+    },
+    "permissions": [
+        "storage"
+    ]
+}
