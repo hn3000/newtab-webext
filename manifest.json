@@ -10,6 +10,13 @@
         "48": "icons/newtab-icon-48.png",
         "96": "icons/newtab-icon-96.png"
     },
+
+    "applications": {
+        "gecko": {
+            "id": "hn3000-newtab@url.hn",
+            "strict_min_version": "58.0a1"
+        }
+    },
     "chrome_url_overrides": {
         "newtab": "newtab.html"
     },
