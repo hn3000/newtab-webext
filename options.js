@@ -1,19 +1,42 @@
 
 const options = {
     save(ev) {
-        browser.storage.local.set({ ...options.data });
-        console.log('saved options');
+        if (typeof browser === 'object' && browser.storage) {
+            browser.storage.local.set({ ...options.data });
+            console.log('saved options in browser.storage');
+        } else if (localStorage) {
+            localStorage.setItem('options', JSON.stringify({ ...options.data }));
+            console.log('saved options in localStorage');
+        } else {
+            console.warn('could not save options');
+        }
         ev.preventDefault();
     },
     get() {
         let result = options.promise;
 
         if (null == options.promise) {
-            result = browser.storage.local.get();
-            result = result.then(x => {
-                options.data = x;
-                return x;
-            });
+            if (typeof browser === 'object' && browser.storage) {
+                result = browser.storage.local.get();
+                console.log('get options from browser.storage');
+            } else if (localStorage && localStorage.getItem('options')) {
+                result = Promise.resolve(localStorage.getItem('options'));
+                result = result.then(x => JSON.parse(x));
+                console.log('got options from localStorage');
+            } else {
+                result = Promise.resolve({});
+                console.warn('could not find options');
+            }
+
+            if (null != result) {
+                result = result.then(x => {
+                    options.data = x;
+                    return x;
+                }, e => {
+                    console.log('error reading options, falling back to default');
+                    options.data = { url: 'about:blank' };
+                });
+            }
             options.promise = result;
         }
         return result;

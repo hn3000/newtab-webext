@@ -17,12 +17,16 @@
             #contents span {
                 display: none;
             }
+            #contents span {
+                padding: 3px;
+            }
             #contents div {
                 flex: 1;
                 height: 100vh;
             }
             #contents.settings-flag .settings,
-            #contents.frame-flag .frame {
+            #contents.frame-flag .frame,
+            #contents .info {
                 display: flex;
             }
             .settings form {
@@ -49,14 +53,25 @@
                 flex: 0;
                 z-index: 100;
             }
+            #contents span.info.navigator {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: fit-content;
+                height: fit-content;
+                flex: 0;
+                z-index: 100;
+                background-color: rgba(255,255,255,0.5);
+            }
         </style>
     </head>
     <body>
         <div id="contents" class="settings-flag">
             <div class="settings">
-                <form id="options">
+                <form id="newtab-options">
                     <h1>New Tab Page Settings</h1>
-                    <input id="url" type="text">
+                    <input id="newtab-url" type="text">
+                    <button id="newtab-save">save</button>
                 </form>
             </div>
             <div class="frame">
@@ -68,7 +83,11 @@
             <span class="switch settings">
                 <input id="switch-contents" type="button" value="contents" >
             </span>
+            <span class="info navigator">
+                
+            </span>
         </div>
+        <script type="text/ecmascript" src="options.js"></script>
         <script type="text/ecmascript" src="code.js"></script>
     </body>
 </html>
