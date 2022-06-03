@@ -2,12 +2,10 @@
 # A very minimal new-tab extension
 
 This extension should work as a very minimal new tab override
-in both Firefox and Chrome.
+in Firefox, Chrome and Edge (previous versions of chrome didn't support
+its functionality, but it works now -- tested in Edge 97, 98 and 99).
 
-It loads in Edge, but Edge doesn't support it's core function.
-
-
-The main advantage of this extension over others is it's size, it has less than 220 lines of (easily reviewed) code.
+The main advantage of this extension over others is its size, it has less than 220 lines of (easily reviewed) code.
 
 ````
 .../newtab$ wc -l *.*
